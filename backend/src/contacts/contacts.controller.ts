@@ -1,24 +1,39 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
+import { ContactDTO } from './dto/contactDTO';
+import { ContactsService } from './contacts.service';
 
 @Controller('/api/v1/contacts')
 export class ContactsController {
+  constructor(private contactsService: ContactsService) {}
   @Get()
   getContacts() {
-    return 'Read contacts';
+    return this.contactsService.getContacts();
   }
 
   @Post()
-  createContact() {
-    return 'Create contact';
+  createContact(@Body() contact: ContactDTO) {
+    return this.contactsService.createContact(contact);
   }
 
-  @Put()
-  updateContact() {
-    return 'Update contact';
+  @Put('/:id')
+  updateContact(@Body() contact: ContactDTO, @Param('id') id: string) {
+    const options = {
+      id,
+      contact,
+    };
+    return this.contactsService.updateContact(options);
   }
 
-  @Delete()
-  deleteContact() {
-    return 'Delete contact';
+  @Delete('/:id')
+  deleteContact(@Param('id') id: string) {
+    return this.contactsService.deleteContact(id);
   }
 }
