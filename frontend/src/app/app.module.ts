@@ -10,6 +10,7 @@ import { DetailsComponent } from './pages/details/details.component';
 import { ContactListComponent } from './pages/home/contact-list/contact-list.component';
 import { ContactListRowComponent } from './pages/home/contact-list/contact-list-row/contact-list-row.component';
 import { FormComponent } from './shared/components/form/form.component';
+import { MaterialModule } from './modules/material/material.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { FormComponent } from './shared/components/form/form.component';
     ContactListRowComponent,
     FormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, MaterialModule],
   providers: [],
   bootstrap: [AppComponent],
 })
