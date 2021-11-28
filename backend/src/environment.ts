@@ -8,4 +8,5 @@ export const environment = {
   dbHost: process.env.DB_HOST || 'localhost',
   dbUser: process.env.DB_USER || 'root',
   dbPassword: process.env.DB_PASSWORD || 'root',
+  dbName: process.env.DB_NAME || 'contacts',
 };
