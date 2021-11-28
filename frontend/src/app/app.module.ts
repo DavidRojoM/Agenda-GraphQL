@@ -8,9 +8,9 @@ import { AddComponent } from './pages/add/add.component';
 import { UpdateComponent } from './pages/update/update.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { ContactListComponent } from './pages/home/contact-list/contact-list.component';
-import { ContactListRowComponent } from './pages/home/contact-list/contact-list-row/contact-list-row.component';
 import { FormComponent } from './shared/components/form/form.component';
 import { MaterialModule } from './modules/material/material.module';
+import { TableComponent } from './pages/home/contact-list/table/table.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { MaterialModule } from './modules/material/material.module';
     UpdateComponent,
     DetailsComponent,
     ContactListComponent,
-    ContactListRowComponent,
     FormComponent,
+    TableComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, MaterialModule],
   providers: [],
