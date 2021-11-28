@@ -3,13 +3,16 @@ import { ContactsController } from './contacts.controller';
 import { ContactsService } from './contacts.service';
 import { ContactsRepository } from './repository/contacts-repository/contacts-repository.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { environment } from '../environment';
+import { ContactSchema } from './schemas/contact.schema';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      `mongodb://${environment.dbUser}:${environment.dbPassword}@${environment.dbHost}:${environment.dbPort}/${environment.dbName}`,
-    ),
+    MongooseModule.forFeature([
+      {
+        name: 'Contact',
+        schema: ContactSchema,
+      },
+    ]),
   ],
   controllers: [ContactsController],
   providers: [ContactsService, ContactsRepository],
