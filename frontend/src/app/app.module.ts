@@ -11,6 +11,12 @@ import { ContactListComponent } from './pages/home/contact-list/contact-list.com
 import { FormComponent } from './shared/components/form/form.component';
 import { MaterialModule } from './modules/material/material.module';
 import { TableComponent } from './pages/home/contact-list/table/table.component';
+import {
+  FontAwesomeModule,
+  FaIconLibrary,
+} from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 
 @NgModule({
   declarations: [
@@ -23,8 +29,12 @@ import { TableComponent } from './pages/home/contact-list/table/table.component'
     FormComponent,
     TableComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule],
+  imports: [BrowserModule, AppRoutingModule, MaterialModule, FontAwesomeModule],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, far);
+  }
+}

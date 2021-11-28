@@ -331,4 +331,6 @@ export class TableComponent implements OnInit, AfterViewInit {
       this._liveAnnouncer.announce('Sorting cleared');
     }
   }
+
+  doSomething() {}
 }

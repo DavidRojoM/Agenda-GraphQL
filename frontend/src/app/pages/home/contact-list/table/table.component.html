@@ -14,7 +14,7 @@
         mat-sort-header
         sortActionDescription="Sort by name"
       >
-        Name
+        {{ "Name" | titlecase }}
       </th>
       <td mat-cell *matCellDef="let element">{{ element.name }}</td>
     </ng-container>
@@ -27,7 +27,7 @@
         mat-sort-header
         sortActionDescription="Sort by surname"
       >
-        Surname
+        {{ "Surname" | titlecase }}
       </th>
       <td mat-cell *matCellDef="let element">{{ element.surname }}</td>
     </ng-container>
@@ -40,7 +40,7 @@
         mat-sort-header
         sortActionDescription="Sort by address"
       >
-        Address
+        {{ "Address" | titlecase }}
       </th>
       <td mat-cell *matCellDef="let element">{{ element.address }}</td>
     </ng-container>
@@ -53,7 +53,7 @@
         mat-sort-header
         sortActionDescription="Sort by dni"
       >
-        Dni
+        {{ "Dni" | titlecase }}
       </th>
       <td mat-cell *matCellDef="let element">{{ element.dni }}</td>
     </ng-container>
@@ -75,7 +75,15 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let element">
-        <a mat-button [routerLink]="['update/', element.id]">Editar</a>
+        <a [routerLink]="['details', element.id]"
+          ><fa-icon [icon]="['fas', 'eye']" size="2x"></fa-icon
+        ></a>
+        <a [routerLink]="['update', element.id]"
+          ><fa-icon [icon]="['fas', 'edit']" size="2x"></fa-icon
+        ></a>
+        <a href="#" (click)="doSomething()"
+          ><fa-icon [icon]="['fas', 'trash-alt']" size="2x"></fa-icon
+        ></a>
       </td>
     </ng-container>
 
