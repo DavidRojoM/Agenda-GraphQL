@@ -1,9 +1,274 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 const DATA = [
+  {
+    id: '1',
+    name: 'David',
+    surname: 'fffsd',
+    address: 'C/ Falsa 123',
+    dni: '623234',
+    phone: '2342345',
+  },
+  {
+    id: '2',
+    name: 'Pedro',
+    surname: 'asd',
+    address: 'B/ Falsa 123',
+    dni: '56734',
+    phone: '24356234',
+  },
+  {
+    id: '3',
+    name: 'Jesus',
+    surname: 'hfgh',
+    address: 'A/ Falsa 123',
+    dni: '6586789345',
+    phone: '123123',
+  },
+  {
+    id: '1',
+    name: 'David',
+    surname: 'fffsd',
+    address: 'C/ Falsa 123',
+    dni: '623234',
+    phone: '2342345',
+  },
+  {
+    id: '2',
+    name: 'Pedro',
+    surname: 'asd',
+    address: 'B/ Falsa 123',
+    dni: '56734',
+    phone: '24356234',
+  },
+  {
+    id: '3',
+    name: 'Jesus',
+    surname: 'hfgh',
+    address: 'A/ Falsa 123',
+    dni: '6586789345',
+    phone: '123123',
+  },
+  {
+    id: '1',
+    name: 'David',
+    surname: 'fffsd',
+    address: 'C/ Falsa 123',
+    dni: '623234',
+    phone: '2342345',
+  },
+  {
+    id: '2',
+    name: 'Pedro',
+    surname: 'asd',
+    address: 'B/ Falsa 123',
+    dni: '56734',
+    phone: '24356234',
+  },
+  {
+    id: '3',
+    name: 'Jesus',
+    surname: 'hfgh',
+    address: 'A/ Falsa 123',
+    dni: '6586789345',
+    phone: '123123',
+  },
+  {
+    id: '1',
+    name: 'David',
+    surname: 'fffsd',
+    address: 'C/ Falsa 123',
+    dni: '623234',
+    phone: '2342345',
+  },
+  {
+    id: '2',
+    name: 'Pedro',
+    surname: 'asd',
+    address: 'B/ Falsa 123',
+    dni: '56734',
+    phone: '24356234',
+  },
+  {
+    id: '3',
+    name: 'Jesus',
+    surname: 'hfgh',
+    address: 'A/ Falsa 123',
+    dni: '6586789345',
+    phone: '123123',
+  },
+  {
+    id: '1',
+    name: 'David',
+    surname: 'fffsd',
+    address: 'C/ Falsa 123',
+    dni: '623234',
+    phone: '2342345',
+  },
+  {
+    id: '2',
+    name: 'Pedro',
+    surname: 'asd',
+    address: 'B/ Falsa 123',
+    dni: '56734',
+    phone: '24356234',
+  },
+  {
+    id: '3',
+    name: 'Jesus',
+    surname: 'hfgh',
+    address: 'A/ Falsa 123',
+    dni: '6586789345',
+    phone: '123123',
+  },
+  {
+    id: '1',
+    name: 'David',
+    surname: 'fffsd',
+    address: 'C/ Falsa 123',
+    dni: '623234',
+    phone: '2342345',
+  },
+  {
+    id: '2',
+    name: 'Pedro',
+    surname: 'asd',
+    address: 'B/ Falsa 123',
+    dni: '56734',
+    phone: '24356234',
+  },
+  {
+    id: '3',
+    name: 'Jesus',
+    surname: 'hfgh',
+    address: 'A/ Falsa 123',
+    dni: '6586789345',
+    phone: '123123',
+  },
+  {
+    id: '1',
+    name: 'David',
+    surname: 'fffsd',
+    address: 'C/ Falsa 123',
+    dni: '623234',
+    phone: '2342345',
+  },
+  {
+    id: '2',
+    name: 'Pedro',
+    surname: 'asd',
+    address: 'B/ Falsa 123',
+    dni: '56734',
+    phone: '24356234',
+  },
+  {
+    id: '3',
+    name: 'Jesus',
+    surname: 'hfgh',
+    address: 'A/ Falsa 123',
+    dni: '6586789345',
+    phone: '123123',
+  },
+  {
+    id: '1',
+    name: 'David',
+    surname: 'fffsd',
+    address: 'C/ Falsa 123',
+    dni: '623234',
+    phone: '2342345',
+  },
+  {
+    id: '2',
+    name: 'Pedro',
+    surname: 'asd',
+    address: 'B/ Falsa 123',
+    dni: '56734',
+    phone: '24356234',
+  },
+  {
+    id: '3',
+    name: 'Jesus',
+    surname: 'hfgh',
+    address: 'A/ Falsa 123',
+    dni: '6586789345',
+    phone: '123123',
+  },
+  {
+    id: '1',
+    name: 'David',
+    surname: 'fffsd',
+    address: 'C/ Falsa 123',
+    dni: '623234',
+    phone: '2342345',
+  },
+  {
+    id: '2',
+    name: 'Pedro',
+    surname: 'asd',
+    address: 'B/ Falsa 123',
+    dni: '56734',
+    phone: '24356234',
+  },
+  {
+    id: '3',
+    name: 'Jesus',
+    surname: 'hfgh',
+    address: 'A/ Falsa 123',
+    dni: '6586789345',
+    phone: '123123',
+  },
+  {
+    id: '1',
+    name: 'David',
+    surname: 'fffsd',
+    address: 'C/ Falsa 123',
+    dni: '623234',
+    phone: '2342345',
+  },
+  {
+    id: '2',
+    name: 'Pedro',
+    surname: 'asd',
+    address: 'B/ Falsa 123',
+    dni: '56734',
+    phone: '24356234',
+  },
+  {
+    id: '3',
+    name: 'Jesus',
+    surname: 'hfgh',
+    address: 'A/ Falsa 123',
+    dni: '6586789345',
+    phone: '123123',
+  },
+  {
+    id: '1',
+    name: 'David',
+    surname: 'fffsd',
+    address: 'C/ Falsa 123',
+    dni: '623234',
+    phone: '2342345',
+  },
+  {
+    id: '2',
+    name: 'Pedro',
+    surname: 'asd',
+    address: 'B/ Falsa 123',
+    dni: '56734',
+    phone: '24356234',
+  },
+  {
+    id: '3',
+    name: 'Jesus',
+    surname: 'hfgh',
+    address: 'A/ Falsa 123',
+    dni: '6586789345',
+    phone: '123123',
+  },
   {
     id: '1',
     name: 'David',
@@ -35,7 +300,7 @@ const DATA = [
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = [
     'name',
     'surname',
@@ -46,12 +311,15 @@ export class TableComponent implements OnInit {
   ];
   dataSource = new MatTableDataSource(DATA);
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
   constructor(private _liveAnnouncer: LiveAnnouncer) {}
 
   @ViewChild(MatSort) sort!: MatSort;
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   ngOnInit(): void {}
