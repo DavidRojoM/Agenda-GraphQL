@@ -5,4 +5,6 @@ export interface Contact extends Document {
   name: string;
   surname: string;
   address: string;
+  dni: string;
+  phone: string;
 }

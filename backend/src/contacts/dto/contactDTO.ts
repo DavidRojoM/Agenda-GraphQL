@@ -3,4 +3,6 @@ export interface ContactDTO {
   name: string;
   surname: string;
   address: string;
+  dni: string;
+  phone: string;
 }
