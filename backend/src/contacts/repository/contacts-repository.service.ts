@@ -17,6 +17,8 @@ export class ContactsRepository {
 
   deleteOne = async (id: string) => this.contactModel.findByIdAndDelete(id);
 
-  updateOne = ({ id, contact }: { contact: ContactDTO; id: string }) =>
-    this.contactModel.findByIdAndUpdate(id, contact);
+  updateOne = async ({ id, contact }: { contact: ContactDTO; id: string }) =>
+    this.contactModel.findByIdAndUpdate(id, contact, {
+      new: true,
+    });
 }
