@@ -4,6 +4,8 @@ import { of } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { ContactsService } from '../../shared/services/contacts.service';
 import { ActionTypes } from '../actions/action.types.enum';
+import { Contact } from '../../shared/models/contact';
+import { ContactsState } from '../interfaces/contacts-state';
 
 @Injectable()
 export class ContactsEffects {
@@ -24,6 +26,72 @@ export class ContactsEffects {
           )
         )
       )
+    )
+  );
+
+  //TODO: REFACTOR
+  addContact$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ActionTypes.ADD_CONTACT_REQUEST),
+      mergeMap((contact) => {
+        console.log(contact);
+        return this.contactsService.addContact(contact).pipe(
+          map((contacts) => ({
+            type: ActionTypes.ADD_CONTACT_SUCCESS,
+            contacts,
+          })),
+          catchError((error) =>
+            of({
+              type: ActionTypes.ADD_CONTACT_FAILURE,
+              error,
+            })
+          )
+        );
+      })
+    )
+  );
+
+  //TODO: REFACTOR
+  updateContact$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ActionTypes.UPDATE_CONTACTS_REQUEST),
+      mergeMap((contact) => {
+        console.log(contact);
+        return this.contactsService.updateContact(contact).pipe(
+          map((contacts) => ({
+            type: ActionTypes.UPDATE_CONTACT_SUCCESS,
+            contacts,
+          })),
+          catchError((error) =>
+            of({
+              type: ActionTypes.UPDATE_CONTACT_FAILURE,
+              error,
+            })
+          )
+        );
+      })
+    )
+  );
+
+  //TODO: REFACTOR
+  removeContact$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ActionTypes.REMOVE_CONTACT_REQUEST),
+      mergeMap((contact) => {
+        console.log(contact);
+        return this.contactsService.deleteContact(contact).pipe(
+          map((contacts) => ({
+            type: ActionTypes.UPDATE_CONTACT_SUCCESS,
+            contacts,
+          })),
+          catchError((error) =>
+            of({
+              type: ActionTypes.UPDATE_CONTACT_FAILURE,
+              error,
+            })
+          )
+        );
+      })
     )
   );
 
