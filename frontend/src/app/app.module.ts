@@ -19,10 +19,10 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { contactsReducer } from './state/reducers/contacts.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { ContactsEffects } from './state/effects/contacts.effects';
 import { HttpClientModule } from '@angular/common/http';
+import { ROOT_REDUCERS } from './state/app.state';
 
 @NgModule({
   declarations: [
@@ -41,7 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MaterialModule,
     FontAwesomeModule,
-    StoreModule.forRoot({ contactsState: contactsReducer }, {}),
+    StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: true }),
     EffectsModule.forRoot([ContactsEffects]),
   ],
