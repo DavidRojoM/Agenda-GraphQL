@@ -19,5 +19,47 @@ export const contactsReducer = createReducer(
     ...state,
     loading: false,
     error,
+  })),
+  on(actions.addContactRequest, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  on(actions.addContactSuccess, (state, { contact }) => ({
+    ...state,
+    contact,
+    loading: false,
+  })),
+  on(actions.addContactFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  })),
+  on(actions.updateContactRequest, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  //TODO: UPDATE STORED CONTACT
+  on(actions.updateContactSuccess, (state, { contact }) => ({
+    ...state,
+    loading: false,
+  })),
+  on(actions.updateContactFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+  })),
+  on(actions.removeContactRequest, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  on(actions.removeContactSuccess, (state, { id }) => ({
+    ...state,
+    contacts: state.contacts.filter((contact) => contact._id !== id),
+    loading: false,
+  })),
+  on(actions.removeContactFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
   }))
 );
