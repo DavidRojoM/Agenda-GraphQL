@@ -1,1 +1,82 @@
-<p>form works!</p>
+<form class="form" [formGroup]="form" (ngSubmit)="logValues()">
+  <header>
+    <h2>Form</h2>
+  </header>
+  <div class="container">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input
+        type="text"
+        matInput
+        [errorStateMatcher]="matcher"
+        formControlName="name"
+      />
+      <mat-error
+        *ngIf="form.controls.name.touched && form.controls.name.invalid"
+      >
+        Must insert a valid name
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Surname</mat-label>
+      <input
+        type="text"
+        matInput
+        [errorStateMatcher]="matcher"
+        formControlName="surname"
+      />
+      <mat-error
+        *ngIf="form.controls.surname.touched && form.controls.surname.invalid"
+      >
+        Must insert a valid surname
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Dni</mat-label>
+      <input
+        type="text"
+        matInput
+        [errorStateMatcher]="matcher"
+        formControlName="dni"
+      />
+      <mat-error *ngIf="form.controls.dni.touched && form.controls.dni.invalid">
+        Must insert a valid dni
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input
+        type="text"
+        matInput
+        [errorStateMatcher]="matcher"
+        formControlName="address"
+      />
+      <mat-error
+        *ngIf="form.controls.address.touched && form.controls.address.invalid"
+      >
+        Must insert a valid address
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input
+        type="tel"
+        matInput
+        [errorStateMatcher]="matcher"
+        formControlName="phone"
+      />
+      <mat-error
+        *ngIf="form.controls.phone.touched && form.controls.phone.invalid"
+      >
+        Must insert a valid phone
+      </mat-error>
+    </mat-form-field>
+
+    <button type="submit" [disabled]="!this.form.valid" mat-button>Send</button>
+    <button type="reset" mat-button>Reset</button>
+  </div>
+</form>

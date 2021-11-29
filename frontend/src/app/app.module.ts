@@ -23,6 +23,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ContactsEffects } from './state/effects/contacts.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { ROOT_REDUCERS } from './state/app.state';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ROOT_REDUCERS } from './state/app.state';
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: true }),
     EffectsModule.forRoot([ContactsEffects]),
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
