@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ContactDTO } from '../../dto/contact-dto';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,8 @@ export class ContactsRepositoryService {
 
   constructor(private http: HttpClient) {}
 
-  findContacts = () => this.http.get(`${this.BASE_URL}/contacts`);
+  findContacts = () =>
+    this.http.get(`${this.BASE_URL}/contacts`).pipe(delay(2000));
 
   addContact = (contact: ContactDTO) =>
     this.http.post(`${this.BASE_URL}contacts`, contact);

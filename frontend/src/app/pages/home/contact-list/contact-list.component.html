@@ -1,1 +1,3 @@
-<app-table [data]="getData()"></app-table>
+{{ this.loading$ | async | json }}
+<!--ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: 'false'-->
+<app-table [data$]="this.contacts$"></app-table>
