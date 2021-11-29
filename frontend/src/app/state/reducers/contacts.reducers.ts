@@ -1,11 +1,8 @@
-import { Contact } from '../../shared/models/contact';
 import { createReducer, on } from '@ngrx/store';
 import { actions } from '../actions/contacts.actions';
+import { ContactsState } from '../interfaces/contacts-state';
 
-export const initialState: {
-  loading: boolean;
-  contacts: ReadonlyArray<Contact>;
-} = { loading: false, contacts: [] };
+export const initialState: ContactsState = { loading: false, contacts: [] };
 
 export const contactsReducer = createReducer(
   initialState,
