@@ -15,7 +15,7 @@ const routes: Routes = [
     component: DetailsComponent,
   },
   {
-    path: 'add/:id',
+    path: 'add',
     component: AddComponent,
   },
   {
