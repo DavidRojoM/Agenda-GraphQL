@@ -13,3 +13,12 @@ export const selectContactsLoading = createSelector(
   selectContactsFeature,
   (state: ContactsState) => state.loading
 );
+
+export const selectContactById = (id: string) =>
+  createSelector(selectContactsFeature, ({ contacts }) => {
+    if (contacts) {
+      return contacts.find((contact) => contact._id === id);
+    } else {
+      return {};
+    }
+  });
