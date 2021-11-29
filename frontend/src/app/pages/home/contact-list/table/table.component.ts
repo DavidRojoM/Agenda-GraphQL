@@ -10,6 +10,9 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { actions } from '../../../../state/actions/contacts.actions';
+import { Contact } from '../../../../shared/models/contact';
 
 @Component({
   selector: 'app-table',
@@ -17,7 +20,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit, AfterViewInit {
-  @Input() public data!: Observable<any[]>;
+  @Input() public data$!: Observable<readonly Contact[]>;
   displayedColumns: string[] = [
     'name',
     'surname',
@@ -30,21 +33,25 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer) {
-    this.data = new Observable<any[]>();
+  constructor(private _liveAnnouncer: LiveAnnouncer, private store: Store) {
+    this.data$ = new Observable<readonly Contact[]>();
   }
 
   @ViewChild(MatSort) sort!: MatSort;
 
   ngAfterViewInit() {
-    this.data.subscribe((data) => {
-      this.dataSource = new MatTableDataSource<any>(data) as any;
+    this.data$.subscribe((data) => {
+      this.dataSource = new MatTableDataSource<Contact>(
+        data as Contact[]
+      ) as any;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.dispatch(actions.loadContactsRequest());
+  }
 
   announceSortChange(sortState: Sort) {
     if (sortState.direction) {
