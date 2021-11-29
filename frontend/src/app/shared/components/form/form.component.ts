@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
@@ -13,44 +13,8 @@ import { MyErrorStateMatcher } from '../utils/ErrorStateMatcher';
 })
 export class FormComponent implements OnInit {
   public contact!: Contact;
+  @Input() public action: any;
   matcher!: MyErrorStateMatcher;
-  // public form = this.fb.group({
-  //   name: [
-  //     '',
-  //     [
-  //       Validators.pattern(/^[a-zñ][a-zñ ]*$/i),
-  //       Validators.minLength(3),
-  //       Validators.maxLength(255),
-  //       Validators.required,
-  //     ],
-  //   ],
-  //   surname: [
-  //     '',
-  //     [
-  //       Validators.pattern(/^[a-zñ][a-zñ ]*$/i),
-  //       Validators.required,
-  //       Validators.minLength(3),
-  //       Validators.maxLength(255),
-  //     ],
-  //   ],
-  //   dni: ['', [Validators.pattern(/^[0-9]{8}\w$/), Validators.required]],
-  //   address: [
-  //     '',
-  //     [
-  //       Validators.pattern(/^[a-zñ][a-zñ/ ]*$/i),
-  //       Validators.required,
-  //       Validators.minLength(3),
-  //       Validators.maxLength(255),
-  //     ],
-  //   ],
-  //   phone: [
-  //     '',
-  //     [
-  //       Validators.pattern(/^(0034|\+34)?[\d]{3}[-]*([\d]{2}[-]*){2}[\d]{2}$/),
-  //       Validators.required,
-  //     ],
-  //   ],
-  // });
 
   public form = this.fb.group({
     name: new FormControl('', [
@@ -89,7 +53,6 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
     if (id) {
       this.store.select(selectContactById(id)).subscribe((contact) => {
         this.contact = contact as Contact;
@@ -106,7 +69,7 @@ export class FormComponent implements OnInit {
     this.form.get('phone')?.setValue(phone);
   }
 
-  logValues(): void {
-    console.log(this.form.value);
+  sendAction() {
+    this.action(this.form.value as Contact);
   }
 }

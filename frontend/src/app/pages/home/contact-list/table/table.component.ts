@@ -33,7 +33,10 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private store: Store) {
+  constructor(
+    private _liveAnnouncer: LiveAnnouncer,
+    private store: Store<any>
+  ) {
     this.data$ = new Observable<readonly Contact[]>();
   }
 
@@ -61,5 +64,7 @@ export class TableComponent implements OnInit, AfterViewInit {
     }
   }
 
-  doSomething() {}
+  delete(_id: string) {
+    this.store.dispatch(actions.removeContactRequest({ id: _id }));
+  }
 }
