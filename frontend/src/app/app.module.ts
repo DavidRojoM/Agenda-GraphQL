@@ -17,6 +17,8 @@ import {
 } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,14 @@ import { far } from '@fortawesome/free-regular-svg-icons';
     FormComponent,
     TableComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MaterialModule, FontAwesomeModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MaterialModule,
+    FontAwesomeModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: true }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
