@@ -18,7 +18,7 @@ export class ContactsRepositoryService {
     this.http.post(`${this.BASE_URL}contacts`, contact);
 
   updateContact = (contact: ContactDTO) =>
-    this.http.put(`${this.BASE_URL}contacts/${contact.id}`, contact);
+    this.http.put(`${this.BASE_URL}contacts/${contact._id}`, contact);
 
   deleteContact = (contactId: string) =>
     this.http.delete(`${this.BASE_URL}contacts/${contactId}`);

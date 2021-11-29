@@ -17,9 +17,9 @@ export class ContactsService {
     this.contactsRepository.updateContact(contact);
 
   deleteContact = (contact: Contact) => {
-    if (!contact.id) {
+    if (!contact._id) {
       return new Error('Contact id not found');
     }
-    return this.contactsRepository.deleteContact(contact.id);
+    return this.contactsRepository.deleteContact(contact._id);
   };
 }
