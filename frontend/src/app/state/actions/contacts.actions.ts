@@ -32,12 +32,12 @@ export const actions = {
   ),
   updateContactRequest: createAction(
     ActionTypes.UPDATE_CONTACTS_REQUEST,
-    props<{ id: string; contact: Contact }>()
+    props<{ contact: Contact }>()
   ),
 
   updateContactSuccess: createAction(
     ActionTypes.UPDATE_CONTACT_SUCCESS,
-    props<{ id: string; contact: Contact }>()
+    props<{ contact: Contact }>()
   ),
 
   updateContactFailure: createAction(
