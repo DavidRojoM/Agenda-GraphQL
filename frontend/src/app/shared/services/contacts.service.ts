@@ -13,8 +13,8 @@ export class ContactsService {
   addContact = (contact: Contact) =>
     this.contactsRepository.addContact(contact);
 
-  updateContact = (contact: Contact) =>
-    this.contactsRepository.updateContact(contact);
+  updateContact = (id: string, contact: Contact) =>
+    this.contactsRepository.updateContact(id, contact);
 
   deleteContact = (contact: Contact) => {
     if (!contact._id) {

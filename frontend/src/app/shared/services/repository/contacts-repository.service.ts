@@ -15,17 +15,13 @@ export class ContactsRepositoryService {
     this.http.get(`${this.BASE_URL}/contacts`).pipe(delay(2000));
 
   //TODO: REFACTOR
-  addContact = (contact: any) => {
-    return this.http.post(`${this.BASE_URL}/contacts`, contact.contact);
+  addContact = (contact: ContactDTO) => {
+    return this.http.post(`${this.BASE_URL}/contacts`, contact);
   };
 
   //TODO: REFACTOR
-  updateContact = (contact: any) => {
-    console.log(contact.contact.contact);
-    return this.http.put(
-      `${this.BASE_URL}/contacts/${contact.contact._id}`,
-      contact.contact
-    );
+  updateContact = (id: string, contact: ContactDTO) => {
+    return this.http.put(`${this.BASE_URL}/contacts/${id}`, contact);
   };
 
   deleteContact = (contactId: string) =>
