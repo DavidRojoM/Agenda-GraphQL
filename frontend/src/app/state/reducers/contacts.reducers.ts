@@ -25,8 +25,7 @@ export const contactsReducer = createReducer(
     loading: true,
   })),
   on(actions.addContactSuccess, (state, { contact }) => ({
-    ...state,
-    contact,
+    contacts: [...state.contacts, contact],
     loading: false,
   })),
   on(actions.addContactFailure, (state, { error }) => ({
