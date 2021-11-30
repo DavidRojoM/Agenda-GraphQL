@@ -17,9 +17,7 @@ export class ContactsService {
     this.contactsRepository.updateContact(contact);
 
   deleteContact = (id: string) => {
-    if (!id) {
-      return new Error('Contact id not found');
-    }
+    //TODO: Preguntar como hacer observable solo de la id del objeto
     return this.contactsRepository.deleteContact(id);
   };
 }
