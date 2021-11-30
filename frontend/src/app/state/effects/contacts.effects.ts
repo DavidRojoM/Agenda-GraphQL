@@ -31,8 +31,8 @@ export class ContactsEffects {
   addContact$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ActionTypes.ADD_CONTACT_REQUEST),
-      mergeMap(({ contact }) => {
-        return this.contactsService.addContact(contact).pipe(
+      mergeMap(({ contact }) =>
+        this.contactsService.addContact(contact).pipe(
           map((contact) => ({
             type: ActionTypes.ADD_CONTACT_SUCCESS,
             contact,
@@ -43,17 +43,17 @@ export class ContactsEffects {
               error,
             })
           )
-        );
-      })
+        )
+      )
     )
   );
 
   //TODO: REFACTOR
   updateContact$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ActionTypes.UPDATE_CONTACTS_REQUEST),
-      mergeMap(({ contact }) => {
-        return this.contactsService.updateContact(contact).pipe(
+      ofType(ActionTypes.UPDATE_CONTACT_REQUEST),
+      mergeMap(({ contact }) =>
+        this.contactsService.updateContact(contact).pipe(
           map((contact) => ({
             type: ActionTypes.UPDATE_CONTACT_SUCCESS,
             contact,
@@ -64,8 +64,8 @@ export class ContactsEffects {
               error,
             })
           )
-        );
-      })
+        )
+      )
     )
   );
 
