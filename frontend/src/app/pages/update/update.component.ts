@@ -19,8 +19,14 @@ export class UpdateComponent implements OnInit {
   ngOnInit(): void {}
 
   updateAction = (contact: Contact) => {
-    const id = this.route.snapshot.paramMap.get('id') as string;
-    this.store.dispatch(actions.updateContactRequest({ id, contact }));
+    const _id = this.route.snapshot.paramMap.get('id') as string;
+    const updatedContact: Contact = {
+      _id,
+      ...contact,
+    };
+    this.store.dispatch(
+      actions.updateContactRequest({ contact: updatedContact })
+    );
     this.router.navigate(['']);
   };
 }
