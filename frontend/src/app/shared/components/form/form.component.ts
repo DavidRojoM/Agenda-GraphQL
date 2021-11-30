@@ -14,17 +14,18 @@ import { MyErrorStateMatcher } from '../utils/ErrorStateMatcher';
 export class FormComponent implements OnInit {
   public contact!: Contact;
   @Input() public action: any;
+  @Input() public editable: boolean = true;
   matcher!: MyErrorStateMatcher;
 
   public form = this.fb.group({
     name: new FormControl('', [
-      Validators.pattern(/^[a-zñ][a-zñ ]*$/i),
+      Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ',\.\-]+$/),
       Validators.minLength(3),
       Validators.maxLength(255),
       Validators.required,
     ]),
     surname: new FormControl('', [
-      Validators.pattern(/^[a-zñ][a-zñ ]*$/i),
+      Validators.pattern(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ',\.\-]+$/),
       Validators.minLength(3),
       Validators.maxLength(255),
       Validators.required,
@@ -34,7 +35,7 @@ export class FormComponent implements OnInit {
       Validators.required,
     ]),
     address: new FormControl('', [
-      Validators.pattern(/^[a-zñ][a-zñ/ ]*$/i),
+      Validators.pattern(/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ/ ',\.\-]+$/),
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(255),

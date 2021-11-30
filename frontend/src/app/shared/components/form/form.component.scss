@@ -1,0 +1,18 @@
+form {
+  width: 30%;
+  min-width: 400px;
+  margin: 0 auto;
+  background-color: var(--third-color);
+  padding: 20px;
+  border-radius: 10px;
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+
+    mat-form-field {
+      grid-column: span 2;
+    }
+  }
+}

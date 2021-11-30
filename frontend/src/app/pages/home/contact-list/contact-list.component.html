@@ -1,4 +1,8 @@
-{{ this.loading$ | async | json }}
-<!--ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: 'false'-->
-<a routerLink="add">Add</a>
-<app-table [data$]="this.contacts$"></app-table>
+<section>
+  <button mat-button routerLink="add" mat-raised-button color="warn">
+    Add
+  </button>
+  <mat-spinner *ngIf="loading$ | async"></mat-spinner>
+
+  <app-table *ngIf="!(loading$ | async)" [data$]="this.contacts$"></app-table>
+</section>

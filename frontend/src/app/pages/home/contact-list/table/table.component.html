@@ -1,10 +1,9 @@
-<div class="mat-elevation-z8 container">
+<div class="container">
   <table
     mat-table
     [dataSource]="dataSource"
     matSort
     (matSortChange)="announceSortChange($event)"
-    class="mat-elevation-z8"
   >
     <!-- Name Column -->
     <ng-container matColumnDef="name">
@@ -81,9 +80,9 @@
         <a [routerLink]="['update', element._id]"
           ><fa-icon [icon]="['fas', 'edit']" size="2x"></fa-icon
         ></a>
-        <button (click)="delete(element._id)">
+        <a (click)="delete(element._id)">
           <fa-icon [icon]="['fas', 'trash-alt']" size="2x"></fa-icon>
-        </button>
+        </a>
       </td>
     </ng-container>
 
@@ -91,7 +90,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
   <mat-paginator
-    [pageSizeOptions]="[5, 10, 20]"
+    [pageSizeOptions]="[5, 10, 20, 50]"
     showFirstLastButtons
     aria-label="Select page of periodic elements"
   >

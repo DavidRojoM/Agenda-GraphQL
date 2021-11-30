@@ -1,11 +1,9 @@
 <form class="form" [formGroup]="form" (ngSubmit)="sendAction()">
-  <header>
-    <h2>Form</h2>
-  </header>
   <div class="container">
     <mat-form-field appearance="outline">
       <mat-label>Name</mat-label>
       <input
+        [readonly]="!editable"
         type="text"
         matInput
         [errorStateMatcher]="matcher"
@@ -21,6 +19,7 @@
     <mat-form-field appearance="outline">
       <mat-label>Surname</mat-label>
       <input
+        [readonly]="!editable"
         type="text"
         matInput
         [errorStateMatcher]="matcher"
@@ -36,6 +35,7 @@
     <mat-form-field appearance="outline">
       <mat-label>Dni</mat-label>
       <input
+        [readonly]="!editable"
         type="text"
         matInput
         [errorStateMatcher]="matcher"
@@ -49,6 +49,7 @@
     <mat-form-field appearance="outline">
       <mat-label>Address</mat-label>
       <input
+        [readonly]="!editable"
         type="text"
         matInput
         [errorStateMatcher]="matcher"
@@ -64,6 +65,7 @@
     <mat-form-field appearance="outline">
       <mat-label>Phone</mat-label>
       <input
+        [readonly]="!editable"
         type="tel"
         matInput
         [errorStateMatcher]="matcher"
@@ -76,7 +78,24 @@
       </mat-error>
     </mat-form-field>
 
-    <button type="submit" [disabled]="!this.form.valid" mat-button>Send</button>
-    <button type="reset" mat-button>Reset</button>
+    <button
+      type="submit"
+      *ngIf="editable"
+      [disabled]="!this.form.valid"
+      mat-button
+      mat-raised-button
+      color="primary"
+    >
+      Send
+    </button>
+    <button
+      type="reset"
+      *ngIf="editable"
+      mat-button
+      mat-raised-button
+      color="primary"
+    >
+      Reset
+    </button>
   </div>
 </form>
