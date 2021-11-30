@@ -20,8 +20,8 @@ export class ContactsRepositoryService {
   };
 
   //TODO: REFACTOR
-  updateContact = (id: string, contact: ContactDTO) => {
-    return this.http.put(`${this.BASE_URL}/contacts/${id}`, contact);
+  updateContact = (contact: ContactDTO) => {
+    return this.http.put(`${this.BASE_URL}/contacts/${contact._id}`, contact);
   };
 
   deleteContact = (contactId: string) =>
