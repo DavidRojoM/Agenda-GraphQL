@@ -16,10 +16,10 @@ export class ContactsService {
   updateContact = (id: string, contact: Contact) =>
     this.contactsRepository.updateContact(id, contact);
 
-  deleteContact = (contact: Contact) => {
-    if (!contact._id) {
+  deleteContact = (id: string) => {
+    if (!id) {
       return new Error('Contact id not found');
     }
-    return this.contactsRepository.deleteContact(contact._id);
+    return this.contactsRepository.deleteContact(id);
   };
 }
