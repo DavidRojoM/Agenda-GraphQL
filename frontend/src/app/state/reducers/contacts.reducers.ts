@@ -39,7 +39,11 @@ export const contactsReducer = createReducer(
   })),
   //TODO: UPDATE STORED CONTACT
   on(actions.updateContactSuccess, (state, { contact }) => ({
-    ...state,
+    contacts: [
+      ...state.contacts.map((currentContact) => {
+        return currentContact._id === contact._id ? contact : currentContact;
+      }),
+    ],
     loading: false,
   })),
   on(actions.updateContactFailure, (state, { error }) => ({
