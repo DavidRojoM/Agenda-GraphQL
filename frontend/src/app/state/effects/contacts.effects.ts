@@ -70,26 +70,25 @@ export class ContactsEffects {
   );
 
   //TODO: REFACTOR
-  // removeContact$ = createEffect(() =>
-  //   this.actions$.pipe(
-  //     ofType(ActionTypes.REMOVE_CONTACT_REQUEST),
-  //     mergeMap((contact) => {
-  //       console.log(contact);
-  //       return this.contactsService.deleteContact(contact).pipe(
-  //         map((contacts) => ({
-  //           type: ActionTypes.UPDATE_CONTACT_SUCCESS,
-  //           contacts,
-  //         })),
-  //         catchError((error) =>
-  //           of({
-  //             type: ActionTypes.UPDATE_CONTACT_FAILURE,
-  //             error,
-  //           })
-  //         )
-  //       );
-  //     })
-  //   )
-  // );
+  removeContact$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ActionTypes.REMOVE_CONTACT_REQUEST),
+      mergeMap(({ id }) =>
+        this.contactsService.deleteContact(id).pipe(
+          map((contact) => ({
+            type: ActionTypes.REMOVE_CONTACT_SUCCESS,
+            contact,
+          })),
+          catchError((error) =>
+            of({
+              type: ActionTypes.REMOVE_CONTACT_FAILURE,
+              error,
+            })
+          )
+        )
+      )
+    )
+  );
 
   constructor(
     private actions$: Actions,
