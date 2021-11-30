@@ -6,8 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { MatSort, Sort } from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -19,7 +18,7 @@ import { Contact } from '../../../../shared/models/contact';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
-export class TableComponent implements OnInit, AfterViewInit {
+export class TableComponent implements AfterViewInit {
   @Input() public data$!: Observable<readonly Contact[]>;
   displayedColumns: string[] = [
     'name',
@@ -33,12 +32,7 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(
-    private _liveAnnouncer: LiveAnnouncer,
-    private store: Store<any>
-  ) {
-    this.data$ = new Observable<readonly Contact[]>();
-  }
+  constructor(private store: Store<any>) {}
 
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -50,18 +44,6 @@ export class TableComponent implements OnInit, AfterViewInit {
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
     });
-  }
-
-  ngOnInit(): void {
-    // this.store.dispatch(actions.loadContactsRequest());
-  }
-
-  announceSortChange(sortState: Sort) {
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
   }
 
   delete(_id: string) {
