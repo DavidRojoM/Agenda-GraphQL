@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Contact } from '../../shared/models/contact';
 import { actions } from '../../state/actions/contacts.actions';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-update',
@@ -9,11 +10,17 @@ import { actions } from '../../state/actions/contacts.actions';
   styleUrls: ['./update.component.scss'],
 })
 export class UpdateComponent implements OnInit {
-  constructor(private store: Store<any>) {}
+  constructor(
+    private store: Store<any>,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {}
 
   updateAction = (contact: Contact) => {
-    this.store.dispatch(actions.addContactRequest({ contact }));
+    const id = this.route.snapshot.paramMap.get('id') as string;
+    this.store.dispatch(actions.updateContactRequest({ id, contact }));
+    this.router.navigate(['']);
   };
 }
