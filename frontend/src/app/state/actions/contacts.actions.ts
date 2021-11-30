@@ -51,7 +51,7 @@ export const actions = {
   ),
   removeContactSuccess: createAction(
     ActionTypes.REMOVE_CONTACT_SUCCESS,
-    props<{ id: string }>()
+    props<{ contact: Contact }>()
   ),
   removeContactFailure: createAction(
     ActionTypes.REMOVE_CONTACT_FAILURE,
