@@ -5,7 +5,7 @@ export enum ActionTypes {
   ADD_CONTACT_REQUEST = '[Contact] Add Contact Request',
   ADD_CONTACT_FAILURE = '[Contact] Add Contact Failure',
   ADD_CONTACT_SUCCESS = '[Contact] Add Contact Success',
-  UPDATE_CONTACTS_REQUEST = '[Contact] Update Contact Request',
+  UPDATE_CONTACT_REQUEST = '[Contact] Update Contact Request',
   UPDATE_CONTACT_FAILURE = '[Contact] Update Contact Failure',
   UPDATE_CONTACT_SUCCESS = '[Contact] Update Contact Success',
   REMOVE_CONTACT_REQUEST = '[Contact] Remove Contact Request',

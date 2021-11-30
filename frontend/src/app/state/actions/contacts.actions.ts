@@ -31,7 +31,7 @@ export const actions = {
     props<{ error: string }>()
   ),
   updateContactRequest: createAction(
-    ActionTypes.UPDATE_CONTACTS_REQUEST,
+    ActionTypes.UPDATE_CONTACT_REQUEST,
     props<{ contact: Contact }>()
   ),
 
