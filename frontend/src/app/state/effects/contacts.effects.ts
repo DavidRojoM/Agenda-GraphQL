@@ -33,7 +33,7 @@ export class ContactsEffects {
   addContact$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ActionTypes.ADD_CONTACT_REQUEST),
-      mergeMap((contact) => {
+      mergeMap(({ contact }) => {
         console.log(contact);
         return this.contactsService.addContact(contact).pipe(
           map((contacts) => ({
@@ -55,9 +55,8 @@ export class ContactsEffects {
   updateContact$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ActionTypes.UPDATE_CONTACTS_REQUEST),
-      mergeMap((contact) => {
-        console.log(contact);
-        return this.contactsService.updateContact(contact).pipe(
+      mergeMap(({ id, contact }) => {
+        return this.contactsService.updateContact(id, contact).pipe(
           map((contacts) => ({
             type: ActionTypes.UPDATE_CONTACT_SUCCESS,
             contacts,
@@ -74,26 +73,26 @@ export class ContactsEffects {
   );
 
   //TODO: REFACTOR
-  removeContact$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(ActionTypes.REMOVE_CONTACT_REQUEST),
-      mergeMap((contact) => {
-        console.log(contact);
-        return this.contactsService.deleteContact(contact).pipe(
-          map((contacts) => ({
-            type: ActionTypes.UPDATE_CONTACT_SUCCESS,
-            contacts,
-          })),
-          catchError((error) =>
-            of({
-              type: ActionTypes.UPDATE_CONTACT_FAILURE,
-              error,
-            })
-          )
-        );
-      })
-    )
-  );
+  // removeContact$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(ActionTypes.REMOVE_CONTACT_REQUEST),
+  //     mergeMap((contact) => {
+  //       console.log(contact);
+  //       return this.contactsService.deleteContact(contact).pipe(
+  //         map((contacts) => ({
+  //           type: ActionTypes.UPDATE_CONTACT_SUCCESS,
+  //           contacts,
+  //         })),
+  //         catchError((error) =>
+  //           of({
+  //             type: ActionTypes.UPDATE_CONTACT_FAILURE,
+  //             error,
+  //           })
+  //         )
+  //       );
+  //     })
+  //   )
+  // );
 
   constructor(
     private actions$: Actions,
