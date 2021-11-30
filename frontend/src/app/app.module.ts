@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,13 +17,15 @@ import {
 } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { ContactsEffects } from './state/effects/contacts.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { ROOT_REDUCERS } from './state/app.state';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AppState } from './state/interfaces/app-state.interface';
+import { actions } from './state/actions/contacts.actions';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,18 @@ import { ReactiveFormsModule } from '@angular/forms';
     EffectsModule.forRoot([ContactsEffects]),
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (store: Store<AppState>) => {
+        return () => {
+          store.dispatch(actions.loadContactsRequest());
+        };
+      },
+      multi: true,
+      deps: [Store],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

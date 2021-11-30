@@ -53,7 +53,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(actions.loadContactsRequest());
+    // this.store.dispatch(actions.loadContactsRequest());
   }
 
   announceSortChange(sortState: Sort) {
