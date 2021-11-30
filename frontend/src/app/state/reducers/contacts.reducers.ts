@@ -55,9 +55,8 @@ export const contactsReducer = createReducer(
     ...state,
     loading: true,
   })),
-  on(actions.removeContactSuccess, (state, { id }) => ({
-    ...state,
-    contacts: state.contacts.filter((contact) => contact._id !== id),
+  on(actions.removeContactSuccess, (state, { contact }) => ({
+    contacts: [...state.contacts.filter(({ _id }) => _id !== contact._id)],
     loading: false,
   })),
   on(actions.removeContactFailure, (state, { error }) => ({
