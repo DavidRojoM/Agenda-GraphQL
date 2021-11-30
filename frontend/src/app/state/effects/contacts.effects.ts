@@ -52,11 +52,11 @@ export class ContactsEffects {
   updateContact$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ActionTypes.UPDATE_CONTACTS_REQUEST),
-      mergeMap(({ id, contact }) => {
-        return this.contactsService.updateContact(id, contact).pipe(
-          map((contacts) => ({
+      mergeMap(({ contact }) => {
+        return this.contactsService.updateContact(contact).pipe(
+          map((contact) => ({
             type: ActionTypes.UPDATE_CONTACT_SUCCESS,
-            contacts,
+            contact,
           })),
           catchError((error) =>
             of({
