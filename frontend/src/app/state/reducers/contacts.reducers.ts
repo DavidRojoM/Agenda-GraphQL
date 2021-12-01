@@ -37,7 +37,6 @@ export const contactsReducer = createReducer(
     ...state,
     loading: true,
   })),
-  //TODO: UPDATE STORED CONTACT
   on(actions.updateContactSuccess, (state, { contact }) => ({
     contacts: [
       ...state.contacts.map((currentContact) => {

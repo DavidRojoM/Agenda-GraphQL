@@ -2,7 +2,6 @@ import { ActionTypes } from './action.types.enum';
 import { createAction, props } from '@ngrx/store';
 import { Contact } from '../../shared/models/contact';
 
-//TODO: FIX UPDATE
 export const actions = {
   loadContactsRequest: createAction(ActionTypes.LOAD_CONTACTS_REQUEST),
 
