@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { actions } from '../../state/actions/contacts.actions';
-import { Contact } from '../../shared/models/contact';
+import { Contact } from '../../shared/domain/models/contact';
 import { Router } from '@angular/router';
 
 @Component({

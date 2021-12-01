@@ -5,7 +5,7 @@ import {
   selectContactsList,
   selectContactsLoading,
 } from '../../../state/selectors/contacts.selector';
-import { Contact } from '../../../shared/models/contact';
+import { Contact } from '../../../shared/domain/models/contact';
 
 @Component({
   selector: 'app-contact-list',

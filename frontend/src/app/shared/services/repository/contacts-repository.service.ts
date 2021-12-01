@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ContactDTO } from '../../dto/contact-dto';
+import { ContactDTO } from '../../domain/dto/contact-dto';
 import { delay } from 'rxjs/operators';
 
 @Injectable({

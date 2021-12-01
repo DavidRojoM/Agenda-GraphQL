@@ -1,4 +1,4 @@
-import { Contact } from '../../shared/models/contact';
+import { Contact } from '../../shared/domain/models/contact';
 
 export interface ContactsState {
   loading: boolean;

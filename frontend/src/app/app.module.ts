@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MaterialModule } from './modules/material/material.module';
+import { MaterialModule } from './shared/services/modules/material/material.module';
 import {
   FontAwesomeModule,
   FaIconLibrary,

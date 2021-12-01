@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ContactsRepositoryService } from './repository/contacts-repository.service';
-import { Contact } from '../models/contact';
+import { Contact } from '../domain/models/contact';
 
 @Injectable({
   providedIn: 'root',

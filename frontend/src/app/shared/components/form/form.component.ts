@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { selectContactById } from '../../../state/selectors/contacts.selector';
-import { Contact } from '../../models/contact';
+import { Contact } from '../../domain/models/contact';
 import { MyErrorStateMatcher } from '../utils/ErrorStateMatcher';
 
 @Component({

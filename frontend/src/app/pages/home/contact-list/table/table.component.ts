@@ -1,17 +1,11 @@
-import {
-  AfterViewInit,
-  Component,
-  Input,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { actions } from '../../../../state/actions/contacts.actions';
-import { Contact } from '../../../../shared/models/contact';
+import { Contact } from '../../../../shared/domain/models/contact';
 
 @Component({
   selector: 'app-table',
