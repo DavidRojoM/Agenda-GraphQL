@@ -10,6 +10,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -26,6 +27,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
   ],
 })
 export class MaterialModule {}
