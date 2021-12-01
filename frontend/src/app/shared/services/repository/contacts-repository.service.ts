@@ -11,19 +11,15 @@ export class ContactsRepositoryService {
 
   constructor(private http: HttpClient) {}
 
-  findContacts = () =>
+  public findContacts = () =>
     this.http.get(`${this.BASE_URL}/contacts`).pipe(delay(2000));
 
-  //TODO: REFACTOR
-  addContact = (contact: ContactDTO) => {
-    return this.http.post(`${this.BASE_URL}/contacts`, contact);
-  };
+  public addContact = (contact: ContactDTO) =>
+    this.http.post(`${this.BASE_URL}/contacts`, contact);
 
-  //TODO: REFACTOR
-  updateContact = (contact: ContactDTO) => {
-    return this.http.put(`${this.BASE_URL}/contacts/${contact._id}`, contact);
-  };
+  public updateContact = (contact: ContactDTO) =>
+    this.http.put(`${this.BASE_URL}/contacts/${contact._id}`, contact);
 
-  deleteContact = (contactId: string) =>
+  public deleteContact = (contactId: string) =>
     this.http.delete(`${this.BASE_URL}/contacts/${contactId}`);
 }
