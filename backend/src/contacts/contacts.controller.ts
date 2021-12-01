@@ -7,7 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { ContactDTO } from './dto/contactDTO';
+import { ContactDTO } from './domain/dto/contactDTO';
 import { ContactsService } from './contacts.service';
 
 @Controller('/api/v1/contacts')

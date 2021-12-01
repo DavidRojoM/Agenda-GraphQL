@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Contact } from '../models/contact.interface';
-import { ContactDTO } from '../dto/contactDTO';
+import { Contact } from '../domain/models/contact.interface';
+import { ContactDTO } from '../domain/dto/contactDTO';
 
 @Injectable()
 export class ContactsRepository {

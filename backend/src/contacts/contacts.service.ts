@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ContactsRepository } from './repository/contacts-repository.service';
-import { ContactDTO } from './dto/contactDTO';
+import { ContactDTO } from './domain/dto/contactDTO';
 
 @Injectable()
 export class ContactsService {
