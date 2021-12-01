@@ -14,6 +14,11 @@ export const selectContactsLoading = createSelector(
   (state: ContactsState) => state.loading
 );
 
+export const selectContactsError = createSelector(
+  selectContactsFeature,
+  (state: ContactsState) => state.error
+);
+
 export const selectContactById = (id: string) =>
   createSelector(selectContactsFeature, ({ contacts }) => {
     if (contacts) {
