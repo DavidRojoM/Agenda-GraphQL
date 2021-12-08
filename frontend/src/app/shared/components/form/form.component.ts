@@ -53,13 +53,15 @@ export class FormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.store.select(selectContactById(id)).subscribe((contact) => {
-        this.contact = contact as Contact;
-        this.fillForm(contact as Contact);
-      });
-    }
+    this.route.paramMap.subscribe((paramMap) => {
+      const id = paramMap.get('id');
+      if (id) {
+        this.store.select(selectContactById(id)).subscribe((contact) => {
+          this.contact = contact as Contact;
+          this.fillForm(contact as Contact);
+        });
+      }
+    });
   }
 
   private fillForm({ name, surname, dni, address, phone }: Contact) {

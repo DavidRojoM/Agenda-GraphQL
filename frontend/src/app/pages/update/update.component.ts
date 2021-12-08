@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class UpdateComponent implements OnInit {
   loading$!: Observable<boolean>;
+  private activatedId = '';
   constructor(
     private store: Store<any>,
     private router: Router,
@@ -21,16 +22,19 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading$ = this.store.select(selectContactsLoading);
+    this.route.paramMap.subscribe((paramMap) => {
+      this.activatedId = paramMap.get('id') as string;
+    });
   }
 
   updateAction = (contact: Contact) => {
-    const _id = this.route.snapshot.paramMap.get('id') as string;
-    const updatedContact: Contact = {
-      _id,
-      ...contact,
-    };
     this.store.dispatch(
-      actions.updateContactRequest({ contact: updatedContact })
+      actions.updateContactRequest({
+        contact: {
+          _id: this.activatedId,
+          ...contact,
+        },
+      })
     );
     this.router.navigate(['']);
   };
