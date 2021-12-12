@@ -2,27 +2,27 @@ import { createSelector } from '@ngrx/store';
 import { AppState } from '../interfaces/app-state.interface';
 import { ContactsState } from '../interfaces/contacts-state';
 
-const selectContactsFeature = (state: AppState) => state.contacts;
+const selectContactsFeature = ({ contacts }: AppState) => contacts;
 
 export const selectContactsList = createSelector(
   selectContactsFeature,
-  (state: ContactsState) => state.contacts
+  ({ contacts }: ContactsState) => contacts
 );
 
 export const selectContactsLoading = createSelector(
   selectContactsFeature,
-  (state: ContactsState) => state.loading
+  ({ loading }: ContactsState) => loading
 );
 
 export const selectContactsError = createSelector(
   selectContactsFeature,
-  (state: ContactsState) => state.error
+  ({ error }: ContactsState) => error
 );
 
 export const selectContactById = (id: string) =>
   createSelector(selectContactsFeature, ({ contacts }) => {
     if (contacts) {
-      return contacts.find((contact) => contact._id === id);
+      return contacts.find(({ _id }) => _id === id);
     } else {
       return {};
     }
