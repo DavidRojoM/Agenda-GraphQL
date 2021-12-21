@@ -1,0 +1,68 @@
+{
+  "contacts": [
+    {
+      "id": "0001",
+      "name": "David",
+      "surname": "Rojo",
+      "address": "C/ aaasdfasdf 123",
+      "dni": "76778899U",
+      "phone": "476654567"
+    },
+    {
+      "id": "0002",
+      "name": "Fran",
+      "surname": "Gómez",
+      "address": "C/ asdfasdfasdfasdf 123",
+      "dni": "78557729I",
+      "phone": "765643590"
+    },
+    {
+      "id": "0003",
+      "name": "Jesus",
+      "surname": "Fernandez",
+      "address": "C/ asdfasdfsaf 123",
+      "dni": "78556298U",
+      "phone": "654689326"
+    },
+    {
+      "id": "0004",
+      "name": "Gonzalo",
+      "surname": "Jimenez",
+      "address": "C/ asdfasdfsadfa 123",
+      "dni": "94556678P",
+      "phone": "256394876"
+    },
+    {
+      "id": "0005",
+      "name": "Ana",
+      "surname": "Rojas",
+      "address": "C/ asdfasdfasdfasdf 123",
+      "dni": "24578865K",
+      "phone": "859473628"
+    },
+    {
+      "id": "0006",
+      "name": "Fernando",
+      "surname": "Álvarez",
+      "address": "C/ Falsa 123",
+      "dni": "45662875R",
+      "phone": "675849302"
+    },
+    {
+      "id": "0007",
+      "name": "Irene",
+      "surname": "Montero",
+      "address": "C/ Falsa 123",
+      "dni": "25668496O",
+      "phone": "666582916"
+    },
+    {
+      "id": "0008",
+      "name": "Marta",
+      "surname": "Muñoz",
+      "address": "C/ Falsa 123",
+      "dni": "78995577Y",
+      "phone": "564888291"
+    }
+  ]
+}
