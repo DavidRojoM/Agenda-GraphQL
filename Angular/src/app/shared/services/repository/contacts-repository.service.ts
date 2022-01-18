@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ContactDTO } from '../../domain/dto/contact-dto';
 import { delay } from 'rxjs/operators';
+import { RepositoryInterface } from '../../../common/repository.interface';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ContactsRepositoryService {
-  BASE_URL = 'http://localhost:3000/api/v1';
+export class ContactsRepositoryService implements RepositoryInterface {
+  constructor(private readonly http: HttpClient) {}
 
-  constructor(private http: HttpClient) {}
+  delete<T>(url: string): Observable<T> {
+    return this.http.delete<T>(url);
+  }
 
-  public findContacts = () =>
-    this.http.get(`${this.BASE_URL}/contacts`).pipe(delay(2000));
+  get<T>(url: string): Observable<T> {
+    return this.http.get<T>(url).pipe(delay(2000));
+  }
 
-  public addContact = (contact: ContactDTO) =>
-    this.http.post(`${this.BASE_URL}/contacts`, contact);
+  post<T>(url: string, values: any): Observable<T> {
+    return this.http.post<T>(url, values);
+  }
 
-  public updateContact = (contact: ContactDTO) =>
-    this.http.put(`${this.BASE_URL}/contacts/${contact._id}`, contact);
-
-  public deleteContact = (contactId: string) =>
-    this.http.delete(`${this.BASE_URL}/contacts/${contactId}`);
+  put<T>(url: string, values: any): Observable<T> {
+    return this.http.put<T>(url, values);
+  }
 }
