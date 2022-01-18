@@ -19,6 +19,7 @@ import { ROOT_REDUCERS } from './state/app.state';
 import { AppState } from './state/interfaces/app-state.interface';
 import { actions } from './state/actions/contacts.actions';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: true }),
     EffectsModule.forRoot([ContactsEffects]),
+    GraphQLModule,
   ],
   providers: [
     {
