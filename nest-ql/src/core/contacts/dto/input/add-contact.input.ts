@@ -5,10 +5,6 @@ import { IsNotEmpty, IsString } from 'class-validator';
 export class AddContactInput {
   @Field()
   @IsString()
-  _id?: string;
-
-  @Field()
-  @IsString()
   @IsNotEmpty()
   name: string;
 

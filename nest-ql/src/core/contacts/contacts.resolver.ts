@@ -13,24 +13,32 @@ export class ContactsResolver {
   @Query(() => [Contact], {
     nullable: 'items',
   })
-  getContacts(): Contact[] {
-    return this.contactsService.getContacts();
+  async getContacts(): Promise<Contact[]> {
+    // return this.contactsService.getContacts().subscribe((res) => {
+    //   console.log(res.data);
+    //   return res.data as Contact[];
+    // });
+    return await this.contactsService.getContacts();
   }
 
-  @Mutation(() => [Contact])
-  addContact(@Args('addContactData') contact: AddContactInput): Contact {
-    return this.contactsService.addContact(contact);
+  @Mutation(() => Contact)
+  async addContact(
+    @Args('addContactData') contact: AddContactInput,
+  ): Promise<Contact> {
+    return await this.contactsService.addContact(contact);
   }
 
-  @Mutation(() => [Contact])
-  updateContact(
+  @Mutation(() => Contact)
+  async updateContact(
     @Args('updateContactData') contact: UpdateContactInput,
-  ): Contact {
-    return this.contactsService.updateContact(contact._id, contact);
+  ): Promise<Contact> {
+    return await this.contactsService.updateContact(contact._id, contact);
   }
 
-  @Mutation(() => [Contact])
-  deleteContact(@Args('deleteContactData') id: DeleteContactInput): Contact {
-    return this.contactsService.deleteContact(id);
+  @Mutation(() => Contact)
+  async deleteContact(
+    @Args('deleteContactData') id: DeleteContactInput,
+  ): Promise<Contact> {
+    return await this.contactsService.deleteContact(id);
   }
 }
