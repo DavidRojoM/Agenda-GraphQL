@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { delay } from 'rxjs/operators';
-import { RepositoryInterface } from '../../../common/repository.interface';
+import { RepositoryInterface } from '../../../../common/repository.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({

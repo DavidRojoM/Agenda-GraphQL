@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ContactsRepositoryService } from './repository/contacts-repository.service';
+import { ContactsRepositoryService } from './repository/rest-repository/contacts-repository.service';
 import { Contact } from '../domain/models/contact';
 import { ContactDTO } from '../domain/dto/contact-dto';
+import { ContactsGraphqlRepositoryService } from './repository/gql-repository/contacts-graphql-repository.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,9 @@ import { ContactDTO } from '../domain/dto/contact-dto';
 export class ContactsService {
   BASE_URL = 'http://localhost:3000/api/v1/contacts';
 
-  constructor(private readonly contactsRepository: ContactsRepositoryService) {}
+  constructor(
+    private readonly contactsRepository: ContactsGraphqlRepositoryService
+  ) {}
 
   public findContacts = () =>
     this.contactsRepository.get<ContactDTO[]>(this.BASE_URL);

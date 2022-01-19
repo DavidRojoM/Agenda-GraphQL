@@ -14,7 +14,11 @@ export class ContactsGraphqlRepositoryService implements RepositoryInterface {
   }
 
   get<T>(url: string): Observable<T> {
-    return of<T>();
+    return this.apollo
+      .watchQuery<T>({
+        query: getContactsQuery,
+      })
+      .valueChanges.pipe(map(({ data }: any) => data.getContacts));
   }
 
   post<T>(url: string, values: any): Observable<T> {
