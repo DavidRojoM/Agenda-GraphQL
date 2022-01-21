@@ -1,11 +1,9 @@
-import { Observable } from 'rxjs';
-
 export interface RepositoryInterface {
-  get<T>(url: string): Observable<T>;
+  get<T>(url: string): Promise<T>;
 
-  delete<T>(url: string): Observable<T>;
+  delete<T>(url: string): Promise<T>;
 
-  post<T>(url: string, values: any): Observable<T>;
+  post<T>(url: string, values: any): Promise<T>;
 
-  put<T>(url: string, values: any): Observable<T>;
+  put<T>(url: string, values: any): Promise<T>;
 }

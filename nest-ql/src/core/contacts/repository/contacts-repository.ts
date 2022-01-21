@@ -13,9 +13,7 @@ export class ContactsRepository {
     surname: 'ERROR',
   };
   BASE_URL = 'http://localhost:3000/api/v1/contacts';
-  //Implementar RepositoryInterface
-  constructor() {}
-  // Poner url en parametrod
+
   get(): Promise<Contact[]> {
     return axios
       .get<Contact[]>(this.BASE_URL)
@@ -29,11 +27,6 @@ export class ContactsRepository {
       });
   }
 
-  // get(): Observable<any> {
-  //   return this.http.get<Contact[]>(this.BASE_URL);
-  // }
-
-  // id = url
   delete(id: string): Promise<Contact> {
     return axios
       .delete<Contact>(`${this.BASE_URL}/${id}`)
@@ -47,7 +40,6 @@ export class ContactsRepository {
       });
   }
 
-  //Poner url: string,
   post(values: any): Promise<Contact> {
     return axios
       .post<Contact>(this.BASE_URL, values)
