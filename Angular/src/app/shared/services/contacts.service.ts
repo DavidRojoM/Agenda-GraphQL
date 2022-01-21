@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ContactsRepositoryService } from './repository/rest-repository/contacts-repository.service';
 import { Contact } from '../domain/models/contact';
 import { ContactDTO } from '../domain/dto/contact-dto';
 import { ContactsGraphqlRepositoryService } from './repository/gql-repository/contacts-graphql-repository.service';
@@ -27,5 +26,5 @@ export class ContactsService {
     );
 
   public deleteContact = (id: string) =>
-    this.contactsRepository.delete<ContactDTO>(`${this.BASE_URL}/${id}`);
+    this.contactsRepository.delete<ContactDTO>(id);
 }
