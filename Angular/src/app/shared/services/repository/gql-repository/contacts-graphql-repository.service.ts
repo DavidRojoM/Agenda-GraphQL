@@ -56,7 +56,18 @@ export class ContactsGraphqlRepositoryService implements RepositoryInterface {
       );
   }
 
-  put<T>(url: string, values: any): Observable<T> {
-    return of<T>();
+  put<T>(url: string, contact: any): Observable<T> {
+    return this.apollo
+      .mutate<T>({
+        mutation: updateContactMutation,
+        variables: {
+          updateContactData: { ...contact },
+        },
+      })
+      .pipe(
+        map(({ data }: any) => {
+          return data.updateContact;
+        })
+      );
   }
 }
