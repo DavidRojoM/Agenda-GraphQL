@@ -9,7 +9,7 @@ import { FormComponent } from '../shared/components/form/form.component';
 import { TableComponent } from './home/contact-list/table/table.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing.module';
-import { MaterialModule } from '../shared/services/modules/material/material.module';
+import { MaterialModule } from '../shared/modules/material/material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
