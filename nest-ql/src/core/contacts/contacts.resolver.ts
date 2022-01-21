@@ -8,16 +8,11 @@ import { DeleteContactInput } from './dto/input/delete-contact.input';
 @Resolver(() => Contact)
 export class ContactsResolver {
   constructor(private readonly contactsService: ContactsService) {}
-  //Añadir async si usamos base de datos
 
   @Query(() => [Contact], {
     nullable: 'items',
   })
   async getContacts(): Promise<Contact[]> {
-    // return this.contactsService.getContacts().subscribe((res) => {
-    //   console.log(res.data);
-    //   return res.data as Contact[];
-    // });
     return await this.contactsService.getContacts();
   }
 

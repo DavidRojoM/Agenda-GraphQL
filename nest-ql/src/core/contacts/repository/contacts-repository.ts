@@ -1,12 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Contact } from '../models/contact';
 import axios from 'axios';
-import { HttpService } from '@nestjs/axios';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class ContactsRepository {
-  private data: Contact[] = [];
   private errorContact: Contact = {
     _id: 'ERROR',
     dni: 'ERROR',
@@ -17,7 +14,7 @@ export class ContactsRepository {
   };
   BASE_URL = 'http://localhost:3000/api/v1/contacts';
   //Implementar RepositoryInterface
-  constructor(private readonly http: HttpService) {}
+  constructor() {}
   // Poner url en parametrod
   get(): Promise<Contact[]> {
     return axios
